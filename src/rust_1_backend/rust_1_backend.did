@@ -1,8 +1,16 @@
-type MoistureData = record { timestamp : nat64; moisture_level : float64 };
+type MoistureData = record { 
+    timestamp : nat64; 
+    moisture_level : float64 
+};
+
 service : {
-  control_pump : (bool) -> ();
-  get_moisture_level : () -> (float64) query;
-  get_moisture_log : () -> (vec MoistureData) query;
-  get_pump_state : () -> (bool) query;
-  update_moisture_level : (float64) -> ();
+    control_pump : (bool) -> ();
+    get_moisture_level : () -> (float64) query;
+    get_moisture_log : () -> (vec MoistureData) query;
+    get_pump_state : () -> (bool) query;
+    update_moisture_level : (float64) -> ();
+    set_moisture_threshold : (float64) -> ();
+    get_moisture_threshold : () -> (opt float64) query;
+    remove_old_log_entries : (nat64) -> ();
+    get_average_moisture : (nat64, nat64) -> (float64) query;
 }
